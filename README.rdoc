@@ -1,7 +1,11 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**************
+
+Upon cloning this repo and setting up the DB (rake db:create db:migrate),
+run "rake import" to populate DB.
+
+**************
 
 Things you may want to cover:
 
