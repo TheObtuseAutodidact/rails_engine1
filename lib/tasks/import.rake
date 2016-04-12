@@ -1,35 +1,35 @@
 require 'csv'
 
-desc "Import Merchants from csv files"
-task :import => [:environment] do
-
-  file = "db/rails_engine_csv/data/merchants.csv"
-
-  CSV.foreach(file, :headers => true) do |row|
-    Merchant.create ({
-      name: row[1],
-      created_at: row[2],
-      updated_at: row[3]
-      })
-    end
-  end
-
-# desc "Import Items from csv files"
+# desc "Import Merchants from csv files"
 # task :import => [:environment] do
 #
-#   file = "db/rails_engine_csv/data/items.csv"
+#   file = "db/rails_engine_csv/data/merchants.csv"
 #
 #   CSV.foreach(file, :headers => true) do |row|
-#     Item.create ({
+#     Merchant.create ({
 #       name: row[1],
-#       description: row[2],
-#       unit_price: row[3],
-#       merchant_id: row[4],
-#       created_at: row[5],
-#       updated_at: row[6]
-#     })
+#       created_at: row[2],
+#       updated_at: row[3]
+#       })
+#     end
 #   end
-# end
+
+desc "Import Items from csv files"
+task :import => [:environment] do
+
+  file = "db/rails_engine_csv/data/items.csv"
+
+  CSV.foreach(file, :headers => true) do |row|
+    Item.create ({
+      name: row[1],
+      description: row[2],
+      unit_price: row[3],
+      merchant_id: row[4],
+      created_at: row[5],
+      updated_at: row[6]
+    })
+  end
+end
 #
 # desc "Import Customers from csv files"
 # task :import => [:environment] do
