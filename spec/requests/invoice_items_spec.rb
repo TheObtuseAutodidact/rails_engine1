@@ -75,9 +75,9 @@ RSpec.describe "InvoiceItems API" do
   describe "GET /api/v1/invoice_items/find_all?unit_price=1000" do
     it "finds and returns all invoice_item with searched name" do
       invoice_item1 = create(:invoice_item)
-      invoice_item2 = create(:invoice_item, unit_price: 1000)
+      invoice_item2 = create(:invoice_item, unit_price: 10.00)
       invoice_item3 = create(:invoice_item)
-      invoice_item4 = create(:invoice_item, unit_price: 1000)
+      invoice_item4 = create(:invoice_item, unit_price: 10.00)
 
       get "/api/v1/invoice_items/find_all?unit_price=#{invoice_item2.unit_price}" , {}, { "Accept" => "application/json" }
 
@@ -87,7 +87,7 @@ RSpec.describe "InvoiceItems API" do
 
       invoice_item_names = body.map { |invoice_item| invoice_item["unit_price"] }
 
-      expect(invoice_item_names).to match_array([invoice_item2.unit_price, invoice_item4.unit_price])
+      expect(invoice_item_names).to match_array([invoice_item2.unit_price.to_s, invoice_item4.unit_price.to_s])
 
     end
   end
