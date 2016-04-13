@@ -57,6 +57,9 @@ Rails.application.routes.draw do
         end
       end
       resources :transactions, controller: "transactions/transactions", as: "transactions", only: [:index, :show] do
+        member do
+          get 'invoice'
+        end
         collection do
           get "find", to: "transactions/transactions_find/find#show"
           get "find_all", to: "transactions/transactions_find/find#index"

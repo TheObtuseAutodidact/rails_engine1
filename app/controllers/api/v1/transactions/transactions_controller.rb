@@ -7,4 +7,8 @@ class Api::V1::Transactions::TransactionsController < ApplicationController
   def show
     respond_with Transaction.find(params[:id])
   end
+
+  def invoice
+    respond_with Transaction.find(params[:id]).invoice
+  end
 end
