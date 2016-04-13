@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json} do
     namespace :v1 do
       resources :merchants, controller: "merchants/merchants", as: "merchants", only: [:index, :show] do # 'controller:' changed from 'to:' after deprecation warning on specs
+        member do
+          get 'items'
+          get 'invoices'
+        end
         collection do
           get "find", to: "merchants/merchants_find/find#show"
           get "find_all", to: "merchants/merchants_find/find#index"
