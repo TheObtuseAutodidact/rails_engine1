@@ -25,6 +25,10 @@ Rails.application.routes.draw do
         end
       end
       resources :customers, controller: "customers/customers", as: "customers", only: [:index, :show] do
+        member do
+          get "invoices"
+          get "transactions"
+        end
         collection do
           get "find", to: "customers/customers_find/find#show"
           get "find_all", to: "customers/customers_find/find#index"
