@@ -42,6 +42,10 @@ Rails.application.routes.draw do
         end
       end
       resources :invoice_items, controller: "invoice_items/invoice_items", as: "invoice_items", only: [:index, :show] do
+        member do
+          get "invoice"
+          get "item"
+        end
         collection do
           get "find", to: "invoice_items/invoice_items_find/find#show"
           get "find_all", to: "invoice_items/invoice_items_find/find#index"
